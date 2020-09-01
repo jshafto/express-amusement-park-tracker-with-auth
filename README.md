@@ -2,7 +2,23 @@
 # Amusement Park Tracker with Authentication
 Completed as part of the App Academy curriculum. Implementation by Juliet Shafto and Michelle Zhang.
 
-## Project Overview
+## Project Description
+
+## Project Status
+- [x] Create User model
+- [x] Configure Express to use sessions
+- [x] Support user self-registration
+- [ ] Support user login
+- [ ] Persist user login state
+- [ ] Restore authenticated user from session
+- [ ] Display user's login state
+- [ ] Implement user logout
+- [ ] Support user attraction visits
+- Bonus:
+  - [ ] Add edit visit and delete visit pages
+  - [ ] Lock down parks and attractions
+
+## Project Details
 This project picks up where the first Amusement Park Tracker project left off!
 In the provided starter project, you can view, create, update, and delete both
 parks and attractions. In this project you'll extend the provided application
@@ -11,7 +27,7 @@ with the following features:
 * User self-registration and login; and
 * Ability for users to record visits to park attractions.
 
-## Phase 0: Download the starter project
+### Phase 0: Download the starter project
 
 Clone the starter project:
 
@@ -28,7 +44,7 @@ Then complete the following set up steps:
 
 Now you can start (`npm start`) and test the application!
 
-## Phase 1: Create the User model
+### Phase 1: Create the User model
 
 The `User` model should include the following properties:
 
@@ -47,7 +63,7 @@ the `hashedPassword` attribute have a datatype of `STRING.BINARY`.
 
 Apply the migration when you're ready.
 
-## Phase 2: Configure Express to use sessions
+### Phase 2: Configure Express to use sessions
 
 Take a moment to install:
 
@@ -85,7 +101,7 @@ app.use(session({
 }));
 ```
 
-## Phase 3: Support user self-registration
+### Phase 3: Support user self-registration
 
 Now it's time to add the user registration form.
 
@@ -157,7 +173,7 @@ At this moment, implement the following validation rules:
   * Not longer than 50 characters
   * Should match the provided `password` value
 
-### Regex Reminders
+#### Regex Reminders
 
 * The hat operator `^` is used to start matching at the beginning of the
   password.
@@ -199,7 +215,7 @@ Now run your application and test the `/user/register` route! Remember that you
 can test your route by registering a user through the form and using Postbird to
 confirm whether or not your user has been persisted to the database.
 
-## Phase 4: Support user login
+### Phase 4: Support user login
 
 Now it's time to add the user login form! Begin by updating the `./routes/user`
 module with `GET` and `POST` routes for the "Login" page (`/user/login`). Make
@@ -249,7 +265,7 @@ error messages. Lastly, you need to render a `user-login` view for this route.
 Make sure to pass in the "Login" title, the `emailAddress` from `req.body`, the
 `errors` array, and a `csrfToken`.
 
-### Testing user login
+#### Testing user login
 
 Run the application and browse to the `/user/login` route. You can test the user
 login form with the following actions:
@@ -269,12 +285,12 @@ login form with the following actions:
   the database **and with a correct password**.
   * This time you should be redirected to the "Home" page.
 
-## Phase 5: Persist user login state
+### Phase 5: Persist user login state
 
 Now it's time to handle persisting the user's login state after they've
 successfully logged into the website!
 
-### Using sessions to persist a user's login state
+#### Using sessions to persist a user's login state
 
 Add a new module named `auth` to the root of your project and add function named
 `loginUser()` to handle persisting a user's login state to session.
@@ -288,7 +304,7 @@ Also, after a new user has registered in the `POST` `/user/register` route
 handler, add a call to the `loginUser()` function after saving the user to the
 database but before redirecting then to the default route.
 
-### Testing user login state persistence
+#### Testing user login state persistence
 
 Run the application (if it's not already running) and use the "Register" and
 "Login" pages to register a new user and login an existing user. Everything
@@ -302,7 +318,7 @@ developer tools and view the "Application" tab, you can view the cookies for
 user, you should see a cookie named `reading-list.sid`. That's the session
 cookie!
 
-## Phase 6: Restore the authenticated user from session
+### Phase 6: Restore the authenticated user from session
 
 Now that you're persisting a user's login state to session, you need to make
 that user's information easily accessible to your application when it's
@@ -331,7 +347,7 @@ After defining the `restoreUser()` function, export it from the `auth` module
 and import it into the `app` module. Then add the `restoreUser()` middleware
 function to the application just before the routes are added.
 
-## Phase 7: Display the user's login state
+### Phase 7: Display the user's login state
 
 It's helpful to display to the end user whether or not they're currently logged
 in. A common approach is to display login and registration links or a welcome
@@ -373,7 +389,7 @@ state displayed in the header! If you log in and click the "Logout" button in
 the header, you'll receive a "Page Not Found" error. This is occurring because
 the `POST` `/user/logout` route doesn't exist. Time to fix that!
 
-## Phase 8: Implement user logout
+### Phase 8: Implement user logout
 
 Define and export a `logoutUser()` function in the `auth` module that removes
 the `auth` property from the `req.session` object.
@@ -386,7 +402,7 @@ redirect the user to the default route.
 The `POST` `/user/logout` route isn't modifying any of the user's data in the
 database so there's no need to protect it from CSRF attacks.
 
-### Testing the latest changes
+#### Testing the latest changes
 
 Run the application and use the "Login" page to login an existing user. You
 should now see the user's first name displayed in the header.
@@ -410,11 +426,11 @@ Session {
 }
 ```
 
-## Phase 9: Support user attraction visits
+### Phase 9: Support user attraction visits
 
 Now you're ready to add support for user attraction visits.
 
-### Create the AttractionVisit model
+#### Create the AttractionVisit model
 
 The `AttractionVisit` model should include the following properties:
 
@@ -549,14 +565,14 @@ attractions).
 
 Apply the migration when you're ready.
 
-### Update the Attraction Detail page
+#### Update the Attraction Detail page
 
 Update the Attraction Detail page to display a list of attraction visits.
 Display an "Add Visit" button (a hyperlink styled as a button using Bootstrap's
 CSS classes) above the list of attraction visits that when clicked, navigates
 the user to the "Add Visit" page.
 
-### Add the Add Visit page
+#### Add the Add Visit page
 
 Add a `./routes/visit` module, then add the `GET` and `POST` routes for the
 "Add Visit" page:
@@ -599,7 +615,7 @@ fields:
 * Rating
 * Comments
 
-### Require a logged in user
+#### Require a logged in user
 
 To add a new visit, the user needs to be logged into the website. Without a
 logged in user, you wouldn't know who to add the visit for!
@@ -627,7 +643,7 @@ router.post('/attraction/:attractionId(\\d+)/visit/add', requireAuth, csrfProtec
 Now, if the current user isn't logged in, they'll be redirected to the "Login"
 page if they attempt view the "Add Visit" page!
 
-## Bonus Phase 1: Adding the Edit Visit and Delete Visit pages
+### Bonus Phase 1: Adding the Edit Visit and Delete Visit pages
 
 * Add the edit and delete attraction visit routes and views.
 * Only display the "Edit" and "Delete" buttons on a visit if the visit's user is
@@ -635,7 +651,7 @@ page if they attempt view the "Add Visit" page!
 * Check that the current user is the owner of the visit before allowing them to
   edit or delete it.
 
-## Bonus Phase 2: Locking down parks and attractions
+### Bonus Phase 2: Locking down parks and attractions
 
 * Add an attribute to the `User` model that allows you to indicate which users
   are "Admin" users.
