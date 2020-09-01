@@ -3,6 +3,7 @@
 Completed as part of the App Academy curriculum. Implementation by Juliet Shafto and Michelle Zhang.
 
 ## Project Description
+The Amusement Park Tracker allows users to view, create, update, and delete both parks and attractions. Users can register for an account and login, and from their account they can record visits to park attractions.
 
 ## Project Status
 - [x] Create User model
