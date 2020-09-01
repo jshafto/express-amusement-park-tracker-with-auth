@@ -1,6 +1,8 @@
 
 # Amusement Park Tracker with Authentication
+Completed as part of the App Academy curriculum. Implementation by Juliet Shafto and Michelle Zhang.
 
+## Project Overview
 This project picks up where the first Amusement Park Tracker project left off!
 In the provided starter project, you can view, create, update, and delete both
 parks and attractions. In this project you'll extend the provided application
@@ -65,7 +67,7 @@ have your application use the session. Make sure you configure the session with
 both `resave` and `saveUninitialized` set to `false`.
 
 Take a moment set a `SESSION_SECRET` environment variable in your `.env` file.
-Add a key of `sessionSecret` connected to the `process.env.SESSION_SECRET` in 
+Add a key of `sessionSecret` connected to the `process.env.SESSION_SECRET` in
 your `./config/index.js` module as well. As a reminder, you can generate a
 [UUID] to have a more secure `sessionSecret` variable value.
 
@@ -77,8 +79,8 @@ Your session should be configured like so:
 
 ```js
 app.use(session({
-  secret: sessionSecret, 
-  resave: false, 
+  secret: sessionSecret,
+  resave: false,
   saveUninitialized: false,
 }));
 ```
@@ -195,7 +197,7 @@ error messages. Lastly, re-render your `user-register` form and pass in your
 
 Now run your application and test the `/user/register` route! Remember that you
 can test your route by registering a user through the form and using Postbird to
-confirm whether or not your user has been persisted to the database. 
+confirm whether or not your user has been persisted to the database.
 
 ## Phase 4: Support user login
 
