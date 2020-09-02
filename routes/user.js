@@ -129,7 +129,7 @@ router.post('/user/login', csrfProtection, loginValidators, asyncHandler( async 
             }
         })
         if (user) {
-            const passwordMatch = bcrypt.compare(password, user.hashedPassword.toString());
+            const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
             if (passwordMatch) {
                 // todo login user
                 return res.redirect('/');

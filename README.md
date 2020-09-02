@@ -9,7 +9,7 @@ The Amusement Park Tracker allows users to view, create, update, and delete both
 - [x] Create User model
 - [x] Configure Express to use sessions
 - [x] Support user self-registration
-- [ ] Support user login
+- [x] Support user login
 - [ ] Persist user login state
 - [ ] Restore authenticated user from session
 - [ ] Display user's login state
